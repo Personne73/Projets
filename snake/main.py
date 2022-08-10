@@ -7,7 +7,7 @@ class Game:
 
     def __init__(self):
         self.screen = pygame.display.set_mode((800, 600))  # dimension de l'écran
-        pygame.display.set_caption("Snake Game") # titre de la fenêtre
+        pygame.display.set_caption("Snake Game")  # titre de la fenêtre
 
         self.gaming_mode = True  # vérification qu'on est bien en jeu
 
