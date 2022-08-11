@@ -23,12 +23,18 @@ class Game:
         self.snack_y = None
         self.snack = 15
 
+        # fixation des fps
+        # self.clock = pygame.time.Clock()
+
     def main(self):
+        clock = pygame.time.Clock()
         self.random_Snack()
         while self.gaming_mode:  # tant que je suis en jeu
+            # pygame.time.delay(10)
+            clock.tick(30)
             self.move()
 
-            if self.snake_x <= 100 or self.snake_y >= 535 or self.snake_y <= 55 or self.snake_x >= 685:
+            if self.snake_x <= 105 or self.snake_y >= 530 or self.snake_y <= 55 or self.snake_x >= 680:
                 sys.exit()
 
             # déplacement du serpent
@@ -37,7 +43,6 @@ class Game:
 
             if self.snack_x == self.snake_x and self.snack_y == self.snake_y:
                 self.random_Snack()
-                pass
 
             self.screen.fill((0, 0, 0))  # attribution d'une couleur à l'écran du jeu (code RGB)
 
@@ -58,27 +63,27 @@ class Game:
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    self.snake_x_direction = 0.12
+                    self.snake_x_direction = 10
                     self.snake_y_direction = 0
 
                 elif event.key == pygame.K_LEFT:
-                    self.snake_x_direction = -0.12
+                    self.snake_x_direction = -10
                     self.snake_y_direction = 0
 
                 elif event.key == pygame.K_UP:
                     self.snake_x_direction = 0
-                    self.snake_y_direction = -0.12
+                    self.snake_y_direction = -10
 
                 elif event.key == pygame.K_DOWN:
                     self.snake_x_direction = 0
-                    self.snake_y_direction = 0.12
+                    self.snake_y_direction = 10
 
     def create_limit(self):
         pygame.draw.rect(self.screen, (255, 255, 255), (100, 50, 600, 500), 3)
 
     def random_Snack(self):
-        self.snack_x = random.randrange(110, 690, 10)
-        self.snack_y = random.randrange(110, 590, 10)
+        self.snack_x = random.randrange(110, 680, 10)
+        self.snack_y = random.randrange(110, 530, 10)
 
 
 def main():
